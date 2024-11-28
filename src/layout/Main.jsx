@@ -1,4 +1,4 @@
-import { HeartIcon } from "@radix-ui/react-icons";
+import { HeartIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
   Flex,
   Text,
@@ -91,7 +91,7 @@ const Main = () => {
                         deleteTodo(v.textId);
                       }}
                     >
-                      삭제
+                      <TrashIcon />
                     </Button>
                   </Flex>
                 </Box>

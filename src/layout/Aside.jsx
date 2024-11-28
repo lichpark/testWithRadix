@@ -9,6 +9,7 @@ import {
   Avatar,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
+import { style } from "../style/style";
 const Aside = ({ city, temp }) => {
   //프롬프트 입력 사용자명 뿌려주기
 
@@ -37,10 +38,12 @@ const Aside = ({ city, temp }) => {
   const today = new Date();
   const starttime = today.toLocaleTimeString();
   const [time, setTime] = useState(starttime);
-  setInterval(() => {
-    const time = new Date().toLocaleTimeString();
-    setTime((prev) => time);
-  }, 1000);
+  useEffect(() => {
+    setInterval(() => {
+      const time = new Date().toLocaleTimeString();
+      setTime((prev) => time);
+    }, 1000);
+  }, []);
 
   // 현재 날짜를 가져옵니다.
   const formattedDate = `${today.getFullYear()}년 ${
@@ -62,19 +65,7 @@ const Aside = ({ city, temp }) => {
   return (
     <div>
       <Flex direction="row" gap="2">
-        <Box
-          width="400px"
-          height="64px"
-          style={{
-            backgroundColor: "white",
-            opacity: "0.5",
-            borderRadius: "var(--radius-3)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "5px 10px",
-          }}
-        >
+        <Box width="400px" height="64px" style={style.boxstyle}>
           <Text size="5" weight="bold" align="center">
             {userName},님 안녕하세요
           </Text>
